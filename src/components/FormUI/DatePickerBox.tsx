@@ -3,10 +3,15 @@ import DatePicker from 'react-datepicker';
 import { Controller } from 'react-hook-form';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DatePickerBox = ({ control, selectedDate, name, label, className = '', error }) => {
+const DatePickerBox = ({ control, selectedDate, name, label, className = '', error, isRequired = false }) => {
   return (
     <div>
-      {label && <label className="block text-left mb-2">{label}</label>}
+      {label && (
+        <label className="block text-left mb-2">
+          {label}
+          {isRequired && <span className="text-red-500"> *</span>}
+        </label>
+      )}
       <div className={`${className} border border-gray-300 p-2 rounded-md`}>
         <Controller
           control={control}

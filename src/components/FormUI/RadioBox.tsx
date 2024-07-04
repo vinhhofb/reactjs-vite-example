@@ -1,10 +1,15 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 
-const RadioBox = ({ control, options, name, label, className = '', error }) => {
+const RadioBox = ({ control, options, name, label, className = '', error, isRequired = false }) => {
   return (
     <div className={className}>
-      {label && <label className="block text-left mb-2">{label}</label>}
+      {label && (
+        <label className="block text-left mb-2">
+          {label}
+          {isRequired && <span className="text-red-500"> *</span>}
+        </label>
+      )}
       <Controller
         control={control}
         name={name}

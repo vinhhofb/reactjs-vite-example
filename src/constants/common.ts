@@ -1,0 +1,6 @@
+export const httpStatus = {
+    UNAUTHORIZED: 401,
+    HTTP_UNPROCESSABLE_ENTITY: 422,
+    INTERNAL_SERVER_ERROR: 500,
+    HTTP_NOTFOUND: 404
+  }

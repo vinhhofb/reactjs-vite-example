@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './layouts/Sidebar';
 import EmployeeSearch from './pages/Employee/Search';
 import EmployeeCreate from './pages/Employee/Create';
+import EmployeeEdit from './pages/Employee/Edit';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Routes>
             <Route path="/employees/search" element={<EmployeeSearch />} />
             <Route path="/employees/create" element={<EmployeeCreate />} />
+            <Route path="/employees/edit/:id" element={<EmployeeEdit />} />
             {/* Thêm các route khác nếu cần */}
           </Routes>
         </Sidebar>

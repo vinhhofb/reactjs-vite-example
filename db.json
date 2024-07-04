@@ -3,10 +3,30 @@
       { "id": "1", "name": "Join Sake", "email": "joinsake@gmail.com", "tel": "0778283833", "job": "Developer"  },
       { "id": "1", "name": "Join Sake", "email": "joinsake@gmail.com", "tel": "0778283833", "job": "Developer"  }
     ],
-    "skills": [
+    "technologies": {
+      "data": [
         {"id": 1, "name": "PHP"},
-        {"id": 2, "name": "React.js"},
-        {"id": 3, "name": "JavaScript"},
+        {"id": 2, "name": "ReactJs"},
+        {"id": 3, "name": "Vuejs"},
         {"id": 4, "name": "Python"}
+      ]
+    },
+    "categories": {
+      "data": [
+        { "id": 1, "name": "Android" },
+        { "id": 2, "name": "iOS" },
+        { "id": 3, "name": "Windows Phone" },
+        { "id": 4, "name": "PHP & MySQL" },
+        { "id": 5, "name": "WordPress" },
+        { "id": 6, "name": "Joomla" },
+        { "id": 7, "name": "Visual C#" },
+        { "id": 8, "name": "ASP/ASP.NET" },
+        { "id": 9, "name": "Java/JSP" },
+        { "id": 10, "name": "Visual Basic" }
+      ]
+    },
+    "posts": [
+      { "id": "1", "title": "a title", "technologies": [1,4,3], "category": 1, "describe": "test" },
+      { "id": "1", "title": "a title", "technologies": [1,4,3], "category": 1, "describe": "test" }
     ]
   }
