@@ -1,9 +1,14 @@
-import { categoryApi } from '../../services/categoryApi';
 import { useQuery } from '@tanstack/react-query';
-import { technologyApi } from '../../services/technologyApi';
 import FormDefault from './components/FormDefault';
-import Loading from '../../components/Loading/Loading';
-import { postApi } from '../../services/postApi';
+import Loading from '@component/Loading/Loading';
+import { postApi } from '@service/postApi';
+
+interface PostData {
+  describe: string;
+  category: string;
+  technologies: number[];
+  title: string;
+}
 
 const useAllData = () => {
   const { data: post, isLoading: postLoading } = useQuery({
@@ -16,11 +21,10 @@ const useAllData = () => {
   return { post, isLoading };
 };
 
-const EmployeeEdit = () => {
+const PostEdit: React.FC = () => {
   const { post, isLoading } = useAllData();
 
-  const onSubmit = (data) => {
-    console.log("vvv");
+  const onSubmit = (data: PostData) => {
     console.log(data);
   };
 
@@ -39,4 +43,4 @@ const EmployeeEdit = () => {
   );
 };
 
-export default EmployeeEdit;
+export default PostEdit;

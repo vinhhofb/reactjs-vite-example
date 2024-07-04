@@ -1,7 +1,14 @@
 import FormDefault from './components/FormDefault';
 
-const EmployeeCreate = () => {
-  const onSubmit = (data) => {
+interface PostData {
+  describe: string;
+  category: string;
+  technologies: number[];
+  title: string;
+}
+
+const PostCreate: React.FC = () => {
+  const onSubmit = (data: PostData) => {
     console.log(data);
   };
 
@@ -15,4 +22,4 @@ const EmployeeCreate = () => {
   );
 };
 
-export default EmployeeCreate;
+export default PostCreate;

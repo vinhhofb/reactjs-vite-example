@@ -13,7 +13,7 @@ interface EmployeeData {
   };
 }
 
-const EmployeeSearch: React.FC = () => {
+const PostSearch: React.FC = () => {
   const location = useLocation();
   const params = queryString.parse(location.search);
   const [currentPage, setCurrentPage] = useState<number>(params.page ? Number(params.page) : 1);
@@ -56,4 +56,4 @@ const EmployeeSearch: React.FC = () => {
   );
 };
 
-export default EmployeeSearch;
+export default PostSearch;
