@@ -1,0 +1,12 @@
+{
+    "employees": [
+      { "id": "1", "name": "Join Sake", "email": "joinsake@gmail.com", "tel": "0778283833", "job": "Developer"  },
+      { "id": "1", "name": "Join Sake", "email": "joinsake@gmail.com", "tel": "0778283833", "job": "Developer"  }
+    ],
+    "skills": [
+        {"id": 1, "name": "PHP"},
+        {"id": 2, "name": "React.js"},
+        {"id": 3, "name": "JavaScript"},
+        {"id": 4, "name": "Python"}
+    ]
+  }
