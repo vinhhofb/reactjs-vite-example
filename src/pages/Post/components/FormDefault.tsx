@@ -10,6 +10,7 @@ import Loading from '@component/Loading/Loading';
 import TextAreaInput from '@component/FormUI/TextAreaInput';
 import SelectBox from '@component/FormUI/SelectBox';
 import MultiSelectBox from '@component/FormUI/MultiSelectBox';
+import InputImage from '../../../components/FormUI/InputImage';
 
 interface FormDefaultProps {
   onSubmit: (data: any) => void;
@@ -32,7 +33,7 @@ const useAllData = () => {
   return { technologies, categories, isLoading };
 };
 
-const FormDefault: React.FC<FormDefaultProps> = ({ onSubmit, post = {} }) => {
+const FormDefault: React.FC<FormDefaultProps> = ({ onSubmit, post = {}, images = [], setImages }) => {
   const { technologies, categories, isLoading } = useAllData();
 
   const schema = yup.object().shape({
@@ -91,22 +92,6 @@ const FormDefault: React.FC<FormDefaultProps> = ({ onSubmit, post = {} }) => {
             />
           </div>
           <div className="grid grid-cols-3 gap-4 mb-3 p-3">
-            {/* <CheckBox
-              control={control}
-              options={options}
-              name="types"
-              label="Types"
-              className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500 w-full"
-              error={errors}
-            /> */}
-            {/* <RadioBox
-              control={control}
-              options={options}
-              name="grant"
-              label="Grant"
-              className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500 w-full"
-              error={errors}
-            /> */}
             <TextAreaInput
               control={control}
               name="describe"
@@ -116,13 +101,7 @@ const FormDefault: React.FC<FormDefaultProps> = ({ onSubmit, post = {} }) => {
               error={errors}
               isRequired={true}
             />
-            {/* <DatePickerBox
-              control={control}
-              name="date"
-              label="Date"
-              className="rounded focus:outline-none focus:border-blue-500 w-full"
-              error={errors}
-            /> */}
+            <InputImage images={images} setImages={setImages} name="images"/>
           </div>
           <button type="submit" className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
             Submit

@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Sidebar = ({ children }) => {
   const [openItemId, setOpenItemId] = useState(null);
 
-  const toggleDropdown = (itemId) => {
+  const toggleDropdown = (itemId: number) => {
     setOpenItemId(openItemId === itemId ? null : itemId);
   };
 
   const sidebarItems = [
     {
       id: 1,
-      label: 'Employees',
+      label: 'Posts',
       icon: '',
       href: '',
       subItems: [
-        { id: 18, label: 'Search', href: '/employees/search' },
-        { id: 19, label: 'Create', href: '/employees/create' }
+        { id: 18, label: 'Search', href: '/posts/search' },
+        { id: 19, label: 'Create', href: '/posts/create' }
       ]
     },
     {
