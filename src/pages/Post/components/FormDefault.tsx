@@ -10,7 +10,7 @@ import Loading from '@component/Loading/Loading';
 import TextAreaInput from '@component/FormUI/TextAreaInput';
 import SelectBox from '@component/FormUI/SelectBox';
 import MultiSelectBox from '@component/FormUI/MultiSelectBox';
-import InputImage from '../../../components/FormUI/InputImage';
+import InputImage from '@component/FormUI/InputImage';
 
 interface FormDefaultProps {
   onSubmit: (data: any) => void;
