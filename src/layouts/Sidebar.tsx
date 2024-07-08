@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { sidebarItems } from '../constants/sidebarItems';
 
 interface SidebarProps {
@@ -7,10 +7,26 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+  const location = useLocation();
   const [openItemId, setOpenItemId] = useState<number | null>(null);
+
+  useEffect(() => {
+    sidebarItems.forEach((item) => {
+      if (item.subItems) {
+        const isSubItemActive = item.subItems.some(subItem => location.pathname.includes(subItem.href));
+        if (isSubItemActive) {
+          setOpenItemId(item.id);
+        }
+      }
+    });
+  }, [location]);
 
   const toggleDropdown = (itemId: number) => {
     setOpenItemId(openItemId === itemId ? null : itemId);
+  };
+
+  const isActive = (href: string) => {
+    return location.pathname.includes(href) ? 'bg-gray-200 dark:bg-gray-700' : '';
   };
 
   return (
@@ -27,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                 {item.subItems ? (
                   <button
                     type="button"
-                    className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    className={`flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 ${isActive(item.href)}`}
                     onClick={() => toggleDropdown(item.id)}
                   >
                     <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
@@ -52,7 +68,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                 ) : (
                   <Link
                     to={item.href}
-                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${isActive(item.href)}`}
                   >
                     <span className="flex-1 ms-3 whitespace-nowrap">{item.label}</span>
                   </Link>
@@ -67,7 +83,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                       <li key={subItem.id}>
                         <Link
                           to={subItem.href}
-                          className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                          className={`flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 ${isActive(subItem.href)}`}
                         >
                           <span className="flex-1 ms-3 whitespace-nowrap">{subItem.label}</span>
                         </Link>
